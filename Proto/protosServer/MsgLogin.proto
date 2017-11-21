@@ -1,0 +1,59 @@
+package com.chatsystem.msg;
+
+import "MsgUser.proto";
+import "MsgRelation.proto";
+import "MsgChat.proto";
+
+//注册
+message McSignUp
+{
+	required string AccountId = 1;  //账户ID
+	required string Password  = 2;  //密码
+	required string Name      = 3;  //新用户昵称
+}
+
+//注册
+message MsSignUp
+{
+	
+}
+
+//登录
+message McLogin 
+{
+	required string AccountId = 1;  //账户ID
+}
+
+//登录
+message MsLogin 
+{
+	required string RandomKey = 1;
+}
+
+//认证
+message McAuth
+{
+	required string AccountId = 1;  //账户ID
+	required string AuthKey   = 2;
+}
+
+message MsUserInit
+{
+	required PbUser User                 =  1;
+	required PbRelationInit Relation     =  2;
+	required PbChatRoomInit ChatRoom     =  3;
+}
+
+//测试用
+message McEasyLogin
+{
+	required string AccountId = 1;  //账户ID
+	required string Password  = 2;  //密码
+	required string Name      = 3;  //新用户昵称
+}
+
+//测试用
+message MsEasyLogin
+{
+	
+}

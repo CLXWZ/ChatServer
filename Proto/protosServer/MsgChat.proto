@@ -1,0 +1,103 @@
+package com.chatsystem.msg;
+
+enum CHAT_TYPE
+{
+	System       = 1;
+	RoomChat     = 2;
+	PrivateChat  = 3;
+	EasyChat     = 4;
+}
+
+enum CHATROOM_NOTIFY_TYPE
+{
+	Join         = 1;  //加入群组
+	Leave        = 2;  //离开群组
+}
+
+//聊天群
+message PbChatRoom
+{
+	required int32  Id             =  1;  //群Id
+	required string RoomName       =  2;  //群名
+	repeated int64  Members        =  3;  //群成员
+}
+
+//聊天群初始化
+message PbChatRoomInit
+{
+	repeated PbChatRoom  Rooms     =  1;
+}
+
+//聊天
+message McChat
+{
+	required CHAT_TYPE ChatType    =  1;  //聊天类型
+	required string    text        =  2;  //消息
+	optional int64     UserId      =  3;  //对象Id
+	optional int32     RoomId      =  4;  //房间Id
+}
+
+//聊天
+message MsChat
+{
+	required CHAT_TYPE ChatType            =  1;  //聊天类型
+	required int64     FromUserId          =  2;
+	required string    FromUserName        =  3;
+	optional string    FromRoomName        =  4;
+	required string    Text                =  5;
+}
+
+//获取所有群组
+message McGetAllChatRoom
+{
+	
+}
+
+//获取所有群组
+message MsGetAllChatRoom
+{
+	repeated PbChatRoom Rooms              =  1;
+}
+
+//群组通知
+message MsChatRoomNotify
+{
+	required CHATROOM_NOTIFY_TYPE  Type    =  1;
+	repeated string                Params  =  2;
+}
+
+//创建群聊
+message McCreateChatRoom
+{
+	required string    RoomName            =  1;
+}
+
+//创建群聊
+message MsCreateChatRoom
+{
+	required PbChatRoom  Room              =  1;
+}
+
+//加入群组
+message McJoinChatRoom
+{
+	required int32     RoomId              =  1;       
+}
+
+//加入群组
+message MsJoinChatRoom
+{
+	required PbChatRoom  Room              =  1; 
+}
+
+//离开群组
+message McLeaveChatRoom
+{
+	required int32     RoomId              =  1;
+}
+
+//离开群组
+message MsLeaveChatRoom
+{
+	required PbChatRoom  Room              =  1; 
+}

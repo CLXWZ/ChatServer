@@ -1,0 +1,77 @@
+package com.chatsystem.msg;
+
+import "MsgUser.proto";
+
+enum RELATION_TYPE
+{
+	Friend        = 1;   //好友
+	BlackList     = 2;   //黑名单
+}
+
+message PbRelationGroup
+{
+	required RELATION_TYPE Type       =  1;   //关系类型
+	required string        GroupName  =  2;
+	repeated PbUser        Users      =  3;
+}
+
+message PbRelationInit
+{
+	repeated PbRelationGroup Groups   =  1;
+}
+
+message McAddRelation
+{
+	required RELATION_TYPE Type       =  1;   //关系类型
+	required string        GroupName  =  2;
+	required int64         Id         =  3;   //对方的id
+}
+
+message MsAddRelation
+{
+	required RELATION_TYPE Type       =  1;   //关系类型
+	required string        GroupName  =  2;
+	required int64         Id         =  3;   //对方的id
+	required string        Name       =  4;   //对方的昵称
+}
+
+message McDeleteRelation
+{
+	required RELATION_TYPE Type       =  1;   //关系类型
+	required int64         Id         =  2;   //对方的id
+}
+
+message MsDeleteRelation
+{
+	required string        GroupName  =  1;
+	required int64         Id         =  2;   //对方的id
+	required string        Name       =  3;   //对方的昵称
+}
+
+//增加一个好友分组
+message McAddRelationGroup
+{
+	required string        GroupName  =  1;   
+}
+
+//增加一个好友分组
+message MsAddRelationGroup
+{
+	required string        GroupName  =  1;   
+}
+
+//移动好友
+message McMoveRelation
+{
+	required int64         Id         =  1;
+	required RELATION_TYPE newType    =  2;
+	required string        GroupName  =  3; 
+}
+
+//移动好友
+message MsMoveRelation
+{
+	required int64         Id            =  1;
+	required string        OldGroupName  =  2; 
+	required string        NewGroupName  =  3; 
+}

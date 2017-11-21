@@ -1,0 +1,25 @@
+package com.chatsystem.msg;
+
+enum ERROR_TYPE 
+{
+	Success           =  0;
+	ParamError        =  1;   //系统错误
+	SelfIsNotTarget   =  2;   //自己不能作为目标
+	TargetOffline     =  3;   //对方不在线
+	TargetNoFriend    =  4;   //对方不是你的好友
+	TargetIsFriend    =  5;   //对方已经是你的好友
+	NoUser            =  6;   //没有这个用户
+	IsInChatGroup     =  7;   //已经在群组中
+	NotInChatGroup    =  8;   //没有在群组中
+	BanLogin          =  9;   //禁止登录 
+	BanChat           =  10;  //禁止聊天
+	HasAccount        =  11;  //账户已存在
+	NoAccount         =  12;  //账户不存在
+	AuthError         =  13;  //账号或密码错误
+	HasName           =  14;  //昵称已存在
+}
+
+message MsError 
+{
+	required ERROR_TYPE Error = 1;
+}

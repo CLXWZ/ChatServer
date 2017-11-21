@@ -1,0 +1,39 @@
+package Msg;
+
+message PbUser
+{
+	required int64  Id          =  1;   //Id
+	required string Account     =  2;   //账户名
+	required string Name        =  3;   //昵称
+}
+
+message McGetAllUsers
+{
+	required bool   IsOnline    =  1;  //是否只要在线用户
+}
+
+message MsGetAllUsers
+{
+	required bool   IsOnline    =  1;  //是否只要在线用户
+	repeated PbUser  Users      =  2;  //用户
+}
+
+message McFindUser
+{
+	required string Name        =  1;
+}
+
+message MsFindUser
+{
+	required PbUser User        =  1;
+}
+
+message MsNotifyLogin
+{
+	required PbUser User        =  1;
+}
+
+message MsNotifyLogoff
+{
+	required PbUser User        =  1;
+}
